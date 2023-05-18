@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personas</title>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Rut</th>
+                <th>Nombre</th>
+                <th>Apellidos</th>
+            </tr>
+        </thead>
+        {%for persona in personas%}
+        <tbody>
+            <tr>
+                <td>{{persona.rut}}</td>
+                <td>{{persona.nombre}}</td>
+                <td>{{persona.apellido}}</td>
+                <td>
+                    <a href="/editar/{{persona.rut}}">Editar</a>
+                    <a href="/eliminar/{{persona.rut}}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br><br>
+    <button><a href="/agregar">Agregar nueva persona</a></button>
+</body>
+
+</html>
