@@ -25,18 +25,13 @@ def editar(request,rut):
     persona = Persona.objects.get(rut=rut)
     return render(request, 'editar.html', {'persona': persona})
 
-def actualizar(request, rut):
-    persona = get_object_or_404(Persona, rut=rut)
-    
-    if request.method == 'POST':
-        form = PersonaForm(request.POST, instance=persona)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/mostrar')
-    else:
-        form = PersonaForm(instance=persona)
-
-    return render(request, 'editar.html', {'form': form, 'persona': persona})
+def actualizar(request, rut):  
+    persona = Persona.objects.get(rut=rut)  
+    form = PersonaForm(request.POST, instance = persona)  
+    if form.is_valid():  
+        form.save()  
+        return redirect("/mostrar")  
+    return render(request, 'editar.html', {'persona': persona})
 
 def eliminar(request, rut):     
     persona = Persona.objects.get(rut=rut)

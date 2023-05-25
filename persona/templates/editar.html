@@ -1,33 +1,22 @@
 <!DOCTYPE html>
-<html lang="es">
-
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Editar Usuario</title>
 </head>
-
 <body>
-    <form method="post">
+    <h1>Editar Usuario</h1>
+    <form method="POST" action="/actualizar/{{persona.rut}}">
         {% csrf_token %}
-        <div>
-            <label for="{{ form.rut.id_for_label }}">Persona rut:</label>
-            {{ form.rut }}
-            <input type="text" name="rut" value="{{ form.rut.value }}">
-        </div>
-        <div>
-            <label for="{{ form.nombre.id_for_label }}">Persona nombre:</label>
-            {{ form.nombre }}
-            <input type="text" name="nombre" value="{{ form.nombre.value }}">
-        </div>
-        <div>
-            <label for="{{ form.apellido.id_for_label }}">Persona apellido:</label>
-            {{ form.apellido }}
-            <input type="text" name="apellido" value="{{ form.apellido.value }}">
-        </div>
-        <button type="submit">Guardar cambios</button>
+        <label for="rut">RUT:</label>
+        <input type="text" id="rut" name="rut" value="{{ persona.rut }}" required><br><br>
+
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" value="{{ persona.nombre }}" required><br><br>
+
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" value="{{ persona.apellido }}" required><br><br>
+
+        <input type="submit" value="Guardar cambios">
     </form>
 </body>
-
 </html>
